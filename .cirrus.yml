@@ -1,0 +1,16 @@
+env:
+  CIRRUS_CLONE_DEPTH: 1
+
+jiu_test_task:
+  freebsd_instance:
+    image_family: freebsd-12
+    memory: 1G
+  install_script:
+    pkg install -y gmake
+  create_user_script:
+    - pw useradd go
+    - chown -R go:go .
+  build_script:
+    - make
+  test_script:
+    - make
