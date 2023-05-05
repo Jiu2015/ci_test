@@ -1,18 +1,10 @@
 env:
   CIRRUS_CLONE_DEPTH: 1
 
+container:
+  image: golang:latest
+
 jiu_test_task:
-  freebsd_instance:
-    image_family: freebsd-12-3
-    memory: 1G
-  install_script:
-    pkg install -y gmake && \ 
-    rm -rf /usr/local/go && \ 
-    tar -C /usr/local -xzf go1.20.4.linux-amd64.tar.gz && \
-    export PATH=$PATH:/usr/local/go/bin
-  create_user_script:
-    - pw useradd go
-    - chown -R go:go .
   build_script:
     - make
   test_script:
