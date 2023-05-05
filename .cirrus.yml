@@ -3,7 +3,7 @@ env:
 
 jiu_test_task:
   freebsd_instance:
-    image_family: freebsd-12
+    image_family: freebsd-12-3
     memory: 1G
   install_script:
     pkg install -y gmake
